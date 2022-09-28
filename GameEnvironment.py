@@ -30,6 +30,23 @@ class GameEnvironment:
         invader = self.invader
         self.screen.blit(invader.invader_icon, (invader.x, invader.y))
 
+    def add_weapon(self):
+        weapon = self.player.weapon
+        self.screen.blit(weapon.img, (weapon.x + WEAPON_X_OFFSET,
+                                      weapon.y + WEAPON_Y_OFFSET))
+
+    def handle_weapon_fire(self):
+        player = self.player
+        print(player)
+        player.weapon.set_coordinates(player.x, player.y)
+        print(player.weapon)
+        if player.weapon.is_ready:
+            player.weapon.fire()
+            print(player.weapon)
+            # player.weapon.y -= player.weapon.dy
+            # weapon.reload_weapon()
+            # print(player.weapon)
+
     def handle_player_actions(self, e):
         if e.type == pygame.KEYDOWN:
             if e.key == pygame.K_LEFT:
@@ -37,7 +54,9 @@ class GameEnvironment:
             if e.key == pygame.K_RIGHT:
                 self.player.dx = PLAYER_X_SPEED
             if e.key == pygame.K_SPACE:
-                self.player.fire_weapon()
+                print("< SPACE >")
+                self.handle_weapon_fire()
+                print(f"{'_' * 30}")
         if e.type == pygame.KEYUP:
             if e.key in [pygame.K_LEFT, pygame.K_RIGHT]:
                 # Reset/Stop movement on key-up

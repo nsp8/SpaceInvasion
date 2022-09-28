@@ -17,5 +17,7 @@ PLAYER_X_INIT, PLAYER_Y_INIT = (WIDTH / 2) - PLAYER_ICON_SIZE, 480
 INVADER_INIT = randint(0, 800), randint(50, 150)
 INVADER_CHANGES = 0.1, 40
 PLAYER_X_SPEED, PLAYER_Y_SPEED = 0.3, 0.1
+WEAPON_DX, WEAPON_DY = 0, 0.3
+WEAPON_X_OFFSET, WEAPON_Y_OFFSET = 16, 10
 # TODO: create map of different ships with their properties (speed,
 #  health, etc.)

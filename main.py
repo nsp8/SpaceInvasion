@@ -12,10 +12,14 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         game.handle_player_actions(event)
+    # TODO: Refactor this
     game.player.correct_boundary()
     game.add_player()
     game.invader.move()
     game.add_invader()
+    if game.player.weapon.state == "fire":
+        game.player.weapon.move()
+        game.add_weapon()
     pygame.display.update()
 
 print("Exited Game")
